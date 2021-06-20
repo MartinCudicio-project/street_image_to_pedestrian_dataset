@@ -1,0 +1,10 @@
+raw_images/
+output/
+
+banque_image/
+
+.DS_Store
+.vscode
+
+# test haar_face detection
+haar_face_detection.py
