@@ -133,7 +133,7 @@ def mask_image(input_folder,output_folder,anonymous,logs):
 		# we keep picture for final_images if only one face is detected
 		if count==1:
 			# we write the original image inside the output_folder/image_body_final
-			cv2.imwrite(f"{output_folder}/image_body_final/{image_name}{image_extension}", image)
+			cv2.imwrite(f"{output_folder}/image_body_final/{image_name}{image_extension}", orig)
 	
 		if logs==True:
 			# write image with face detection if logs option activated
