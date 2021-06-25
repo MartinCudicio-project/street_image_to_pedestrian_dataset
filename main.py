@@ -2,6 +2,7 @@ import argparse
 import os
 
 from detect_body_attention import mask_image
+from detect_body_attention_haar import face_detection
 from detect_pedestrian import photo_body
 
 def main():
@@ -19,7 +20,7 @@ def main():
         help="make all output pictures anonymous")
     args = vars(ap.parse_args())
     
-    print()
+    print(args)
     print("-------------------------------------------------------")
     print("STEP 1 -- Pedestrian Detection")
     photo_body(args["input_folder"],args['output_folder'],args['logs'])
@@ -29,7 +30,7 @@ def main():
     print("STEP 2 -- Pedestrian attention")
     # we set input_folder to output_folder/image_body
     args['input_folder'] = os.path.sep.join([args["output_folder"],'image_body'])
-    mask_image(args["input_folder"],args["output_folder"],args["anonymous"],args['logs'])
+    face_detection(args["input_folder"],args["output_folder"],args["anonymous"],args['logs'])
 
     
 	

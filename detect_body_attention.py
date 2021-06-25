@@ -22,7 +22,7 @@ def mask_image(input_folder,output_folder,anonymous,logs):
 	mask_detector="./models/mask_detector.model"
 
 	# we create folders if not exist
-    # image_body_final_facebox for face detection analysis
+    # image_body_facebox for face detection analysis
     # image_body_final for final images
 	if logs==True:
 	# subfolders needed
@@ -44,10 +44,6 @@ def mask_image(input_folder,output_folder,anonymous,logs):
 	weightsPath = os.path.sep.join([face_detector,
 		"res10_300x300_ssd_iter_140000.caffemodel"])
 	net = cv2.dnn.readNet(prototxtPath, weightsPath)
-
-	# load the face mask detector model from disk
-	print("[INFO] loading face mask detector model...")
-	model = load_model(mask_detector)
 
 	# we fetch images path
 	images_path = glob.glob(os.path.sep.join([input_folder, "*"]))
@@ -79,6 +75,7 @@ def mask_image(input_folder,output_folder,anonymous,logs):
 			# extract the confidence (i.e., probability) associated with
 			# the detection
 			confidence = detections[0, 0, i, 2]
+			print(confidence)
 			# filter out weak detections by ensuring the confidence is
 			# greater than the minimum confidence
 			if confidence > confidence_excepted:
