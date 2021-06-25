@@ -56,9 +56,7 @@ def mask_image(input_folder,output_folder,anonymous,logs):
 
 	# load the input image from disk, clone it, and grab the image spatial
 	# dimensions
-	print(images_path)
 	for image_path in tqdm(images_path):
-		
 		image_name = os.path.splitext(os.path.basename(image_path))[0]
 		image_extension = os.path.splitext(os.path.basename(image_path))[1]
 		image = cv2.imread(image_path)
@@ -66,7 +64,7 @@ def mask_image(input_folder,output_folder,anonymous,logs):
 		(h, w) = image.shape[:2]
 
 		# construct a blob from the image
-		blob = cv2.dnn.blobFromImage(image, 1.2, (300, 300),
+		blob = cv2.dnn.blobFromImage(image, 1.0, (300, 300),
 			(104.0, 177.0, 123.0))
 
 		# pass the blob through the network and obtain the face detection
@@ -75,15 +73,12 @@ def mask_image(input_folder,output_folder,anonymous,logs):
 		
 		# we count face detected in one pic
 		count = 0
-		print(image_name)
-		cv2.imshow(image_name,cv2.resize(orig, (224, 224)))
-		cv2.waitKey(0)
+
 		# loop over the detections
 		for i in range(0, detections.shape[2]):
 			# extract the confidence (i.e., probability) associated with
 			# the detection
 			confidence = detections[0, 0, i, 2]
-			# print(confidence)
 			# filter out weak detections by ensuring the confidence is
 			# greater than the minimum confidence
 			if confidence > confidence_excepted:
