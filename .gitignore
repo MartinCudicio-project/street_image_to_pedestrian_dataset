@@ -1,10 +1,9 @@
 
-output/
+output*
 
-banque_image/
-
-.DS_Store
+*.DS_Store
 .vscode
+*.pyc
 
 # test haar_face detection
 haar_face_detection.py
