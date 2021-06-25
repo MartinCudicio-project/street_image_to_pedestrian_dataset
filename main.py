@@ -1,7 +1,7 @@
 import argparse
 import os
 
-from detect_body_attention import mask_image
+# from detect_body_attention import mask_image
 from detect_body_attention_haar import face_detection
 from detect_pedestrian import photo_body
 
@@ -27,7 +27,7 @@ def main():
 
     print()
     print("-------------------------------------------------------")
-    print("STEP 2 -- Pedestrian attention")
+    print("STEP 2 -- Pedestrian Attention")
     # we set input_folder to output_folder/image_body
     args['input_folder'] = os.path.sep.join([args["output_folder"],'image_body'])
     face_detection(args["input_folder"],args["output_folder"],args["anonymous"],args['logs'])

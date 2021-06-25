@@ -6,7 +6,6 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.models import load_model
 import numpy as np
-import argparse
 import cv2
 import os
 import glob
@@ -18,8 +17,6 @@ def mask_image(input_folder,output_folder,anonymous,logs):
 	confidence_excepted=0.55
 	# face detector path
 	face_detector="./models/face_detector"
-	# mask detector path
-	mask_detector="./models/mask_detector.model"
 
 	# we create folders if not exist
     # image_body_facebox for face detection analysis
